@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'fafx'
+
+puts Fafx::ExchangeRate
