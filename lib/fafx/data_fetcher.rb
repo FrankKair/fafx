@@ -3,7 +3,6 @@ require 'nokogiri'
 
 module Fafx
   module DataFetcher
-    # Saves rates.yaml to disk.
     def save_to_disk
       url = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml'
       doc = Nokogiri::XML(open(url))
@@ -13,8 +12,7 @@ module Fafx
     end
 
     private
-    # doc: Nokogiri::Doc
-    # -> Hash[String => Float]
+
     def process_currencies_xml(doc)
       rates = {}
       doc.css('Cube>Cube[time]').each do |day|
