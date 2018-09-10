@@ -1,4 +1,34 @@
 #!/usr/bin/env ruby
+require 'optparse'
 require 'fafx'
 
-puts Fafx::ExchangeRate
+ARGV[0] = '--help' if ARGV.empty?
+puts "invalid option: #{ARGV[0]}" unless ARGV[0].include?('--') || ARGV[0].include?('-')
+
+options = {}
+opt_parser = OptionParser.new do |opt|
+  opt.on('--recent', 'Lists most recent rates') { |o| options[:recent] = o }
+  opt.on('--currencies', 'Lists available currencies') { |o| options[:currencies] = o }
+  opt.on('--dates', 'Lists available dates') { |o| options[:dates] = o }
+  opt.on('--update', 'Fetches new data from the web') { |o| options[:update] = o }
+end
+
+begin
+  opt_parser.parse!
+  options.keys.each do |k|
+    case k
+    when :recent
+      Fafx::ExchangeRate.most_recent.each_pair do |pair|
+        puts "#{pair.first} #{pair.last}"
+      end
+    when :currencies
+      puts Fafx::ExchangeRate.currencies_available
+    when :dates
+      puts Fafx::ExchangeRate.dates_available
+    when :update
+      Fafx::DataFetcher.save_to_disk
+    end
+  end
+rescue Exception => e
+  puts e.to_s unless e.message == 'exit'
+end
