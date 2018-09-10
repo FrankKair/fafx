@@ -3,6 +3,7 @@ require 'yaml'
 # TODO: Create a currency class?
 module Fafx
   class ER
+    attr_reader :rates, :dates, :currencies
     def initialize
       data = load_data
       @rates = data
