@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/FrankKair/fafx.svg?branch=master)](https://travis-ci.org/FrankKair/fafx)
 
+FAFX fetches data from the 90 day European Central Bank (ECB) feed and offers a simple CLI and API to interect with.
+
 ## Installation
 
     $ gem install fafx
@@ -24,35 +26,22 @@ Usage: fafx [options]
 require 'Date'
 require 'fafx'
 
-puts Fafx::ExchangeRate.at(Date.today, 'GBP', 'USD')
-puts Fafx::ExchangeRate.currencies_available
-puts Fafx::ExchangeRate.dates_available
-puts Fafx::ExchangeRate.most_recent
-```
+Fafx::ExchangeRate.at(Date.today, 'GBP', 'USD')
+# => 1.2951645399597045
 
-This code outputs:
+Fafx::ExchangeRate.currencies_available
+# => ["USD", "JPY", "BGN", "CZK", ...]
 
-```
-1.2951995012468827
+Fafx::ExchangeRate.dates_available
+# => ["2018-09-10", "2018-09-07", "2018-09-06", "2018-09-05", ...]
 
-USD
-JPY
-BGN
-CZK
-...
-
-2018-09-07
-2018-09-06
-2018-09-05
-2018-09-04
-...
-
-{"USD"=>1.1615, "JPY"=>128.74, "BGN"=>1.9558, "CZK"=>25.697 ... }
+Fafx::ExchangeRate.most_recent
+# => {"USD"=>1.1571, "JPY"=>128.54, "BGN"=>1.9558, "CZK"=>25.648, ...}
 ```
 
 ## Updating the exchange rates data
 
-You can update the exchange rates values either via the CLI or the Rake task:
+You can update the exchange rates values either via the **CLI** or the **Rake task**:
 
     $ fafx --update
 
