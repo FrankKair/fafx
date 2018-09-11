@@ -18,7 +18,6 @@ module DataFetcher
       time = day[:time]
       rates[time] = {}
       day.css('Cube').each do |currency|
-        # TODO: Think about float value - type safety
         rates[time][currency[:currency]] = currency[:rate].to_f
       end
     end

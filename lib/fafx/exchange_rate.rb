@@ -1,9 +1,9 @@
 module Fafx
   module ExchangeRate
     def at(date, base, other)
-      er = ER.new
-      base = er.rates_at(date.to_s, base)
-      other = er.rates_at(date.to_s, other)
+      ex_rates = ER.new
+      base = ex_rates.rates_at(date.to_s, base)
+      other = ex_rates.rates_at(date.to_s, other)
       other / base
     end
 
@@ -16,9 +16,9 @@ module Fafx
     end
 
     def most_recent
-      er = ER.new
-      k = er.dates.first
-      er.rates[k]
+      ex_rates = ER.new
+      first_date = ex_rates.dates.first
+      ex_rates.rates[first_date]
     end
 
     def fetch_data_and_save_to_disk
