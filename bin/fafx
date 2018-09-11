@@ -3,14 +3,24 @@ require 'optparse'
 require 'fafx'
 
 ARGV[0] = '--help' if ARGV.empty?
-puts "invalid option: #{ARGV[0]}" unless ARGV[0].include?('--') || ARGV[0].include?('-')
+unless ARGV[0].include?('--') || ARGV[0].include?('-')
+  puts "invalid option: #{ARGV[0]}"
+end
 
 options = {}
 opt_parser = OptionParser.new do |opt|
-  opt.on('--recent', 'Lists most recent rates') { |o| options[:recent] = o }
-  opt.on('--currencies', 'Lists available currencies') { |o| options[:currencies] = o }
-  opt.on('--dates', 'Lists available dates') { |o| options[:dates] = o }
-  opt.on('--update', 'Fetches new data from the web') { |o| options[:update] = o }
+  opt.on('--recent', 'Lists most recent rates') do |o|
+    options[:recent] = o
+  end
+  opt.on('--currencies', 'Lists available currencies') do |o|
+    options[:currencies] = o
+  end
+  opt.on('--dates', 'Lists available dates') do |o|
+    options[:dates] = o
+  end
+  opt.on('--update', 'Fetches new data from the web') do |o|
+    options[:update] = o
+  end
 end
 
 begin
@@ -26,10 +36,10 @@ begin
     when :dates
       puts Fafx::ExchangeRate.dates_available
     when :update
-      Fafx::DataFetcher.save_to_disk
+      Fafx::ExchangeRate.fetch_data_and_save_to_disk
       puts 'Exchange rates data updated!'
     end
   end
-rescue Exception => e
+rescue StandardError => e
   puts e.to_s unless e.message == 'exit'
 end

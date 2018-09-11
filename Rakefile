@@ -7,6 +7,6 @@ RSpec::Core::RakeTask.new(:spec)
 task default: :spec
 
 task :update_data do
-  Fafx::DataFetcher.save_to_disk
+  Fafx::ExchangeRate.fetch_data_and_save_to_disk
   puts 'Exchange rates data updated!'
 end
