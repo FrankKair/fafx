@@ -27,6 +27,7 @@ begin
       puts Fafx::ExchangeRate.dates_available
     when :update
       Fafx::DataFetcher.save_to_disk
+      puts 'Exchange rates data updated!'
     end
   end
 rescue Exception => e

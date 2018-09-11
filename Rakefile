@@ -8,4 +8,5 @@ task default: :spec
 
 task :update_data do
   Fafx::DataFetcher.save_to_disk
+  puts 'Exchange rates data updated!'
 end

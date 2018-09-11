@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/FrankKair/fafx.svg?branch=master)](https://travis-ci.org/FrankKair/fafx)
 
-### Installation
+## Installation
 
-`$ gem install fafx`
+    $ gem install fafx
 
-### CLI
+## CLI
 
-`$ fafx`
+    $ fafx
 
 ```
 Usage: fafx [options]
@@ -18,7 +18,7 @@ Usage: fafx [options]
         --update      Fetches new data from the web
 ```
 
-### Example of client usage
+## Example of client usage
 
 ```ruby
 require 'Date'
@@ -50,10 +50,20 @@ CZK
 {"USD"=>1.1615, "JPY"=>128.74, "BGN"=>1.9558, "CZK"=>25.697 ... }
 ```
 
-### Updating the exchange rates data
+## Updating the exchange rates data
 
-You can update the exchange rates values via the CLI using:
+You can update the exchange rates values either via the CLI or the Rake task:
 
-`$ fafx --update`
+    $ fafx --update
 
-One can also use the `$ rake update_data` task as well.
+    $ rake update_data
+
+---
+
+One can also schedule a **cron job** (the following example fetches the data every minute):
+
+```
+* * * * * . ~/.zshrc; fafx -u
+```
+
+Note: `. ~/.zshrc` is used to load the environment with the Ruby gems path, because cron uses `PATH=/usr/bin:/usr/sbin` and `SHELL=/usr/bin/sh by default`. Fonts: [here](http://man7.org/linux/man-pages/man5/crontab.5.html) and [here](http://www.adminschoice.com/crontab-quick-reference)
