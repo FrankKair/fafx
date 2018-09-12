@@ -39,13 +39,21 @@ Fafx::ExchangeRate.most_recent
 # => {"USD"=>1.1571, "JPY"=>128.54, "BGN"=>1.9558, "CZK"=>25.648, ...}
 ```
 
+The `at` function may raise a `KeyError` exception, should the date or currency be unavailable.
+
 ## Updating the exchange rates data
 
-You can update the exchange rates values either via the **CLI** or the **Rake task**:
+You can update the exchange rates values either via the **CLI**, **Rake task** or **programmatically**:
 
     $ fafx --update
 
     $ rake update_data
+
+```ruby
+require 'fafx'
+
+Fafx::ExchangeRate.fetch_data_and_save_to_disk
+```
 
 ---
 
@@ -55,4 +63,4 @@ One can also schedule a **cron job** (the following example fetches the data eve
 * * * * * . ~/.zshrc; fafx -u
 ```
 
-Note: `. ~/.zshrc` is used to load the environment with the Ruby gems path, because cron uses `PATH=/usr/bin:/usr/sbin` and `SHELL=/usr/bin/sh by default`. Fonts: [here](http://man7.org/linux/man-pages/man5/crontab.5.html) and [here](http://www.adminschoice.com/crontab-quick-reference)
+Note: `. ~/.zshrc` is used to load the environment with the Ruby gems path, because cron uses `PATH=/usr/bin:/usr/sbin` and `SHELL=/usr/bin/sh` by default. Fonts: [here](http://man7.org/linux/man-pages/man5/crontab.5.html) and [here](http://www.adminschoice.com/crontab-quick-reference)
