@@ -1,6 +1,6 @@
 require 'yaml'
 
-class ER
+class Core
   attr_reader :rates, :dates, :currencies
   def initialize
     data = load_data
