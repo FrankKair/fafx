@@ -39,7 +39,7 @@ Fafx::ExchangeRate.most_recent
 # => {"USD"=>1.1571, "JPY"=>128.54, "BGN"=>1.9558, "CZK"=>25.648, ...}
 ```
 
-The `at` function may raise a `KeyError` exception, should the date or currency be unavailable.
+The `at` function may raise a `DateError` or `CurrencyError` exception, should the date or currency be unavailable.
 
 ## Updating the exchange rates data
 

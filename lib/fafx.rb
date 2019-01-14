@@ -1,4 +1,5 @@
 require 'fafx/version'
-require 'fafx/data_fetcher'
 require 'fafx/core'
+require 'fafx/data_fetcher'
+require 'fafx/date_error'
 require 'fafx/exchange_rate'

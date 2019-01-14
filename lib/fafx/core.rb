@@ -10,8 +10,8 @@ class Core
   end
 
   def rates_at(date, curr)
-    raise KeyError, 'Date not available' unless @dates.include?(date)
-    raise KeyError, "#{curr} not found" unless @currencies.include?(curr)
+    raise Fafx::DateError, 'Date not available' unless @dates.include?(date)
+    raise Fafx::CurrencyError, "#{curr} not found" unless @currencies.include?(curr)
     @rates[date][curr]
   end
 
