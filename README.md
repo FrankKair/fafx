@@ -52,7 +52,7 @@ You can update the exchange rates values either via the **CLI**, **Rake task** o
 ```ruby
 require 'fafx'
 
-Fafx::ExchangeRate.fetch_data_and_save_to_disk
+Fafx::ExchangeRate.update_data
 ```
 
 ---
