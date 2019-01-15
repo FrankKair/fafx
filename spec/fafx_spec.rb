@@ -10,13 +10,13 @@ RSpec.describe Fafx do
 
   it 'Raise exception if date is out of range' do
     expect do
-      Fafx::ExchangeRate.at('2015-09-06', 'GBP', 'USD')
+      Fafx::ExchangeRate.at(Date.today - 100, 'GBP', 'USD')
     end.to raise_exception(Fafx::DateError)
   end
 
   it 'Raise exception if currency does not exist' do
     expect do
-      Fafx::ExchangeRate.at('2018-09-06', 'ZZZ', 'USD')
+      Fafx::ExchangeRate.at(Date.today, 'ZZZ', 'USD')
     end.to raise_exception(Fafx::CurrencyError)
   end
 end
