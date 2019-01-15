@@ -19,7 +19,7 @@ class Core
 
   def load_data
     rates = "#{File.join(File.dirname(__FILE__))}/rates.yaml"
-    Fafx::ExchangeRate.fetch_data_and_save_to_disk unless File.exist?(rates)
+    Fafx::ExchangeRate.update_data unless File.exist?(rates)
     YAML.load_file(rates)
   end
 end

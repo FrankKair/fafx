@@ -1,6 +1,13 @@
 module Fafx
   module ExchangeRate
     def at(date, base, other)
+      case date.wday
+      when 6 # Saturday
+        date -= 1
+      when 0 # Sunday
+        date -= 2
+      end
+
       ex_rates = Core.new
       base = ex_rates.rates_at(date.to_s, base)
       other = ex_rates.rates_at(date.to_s, other)
@@ -21,13 +28,13 @@ module Fafx
       ex_rates.rates[first_date]
     end
 
-    def fetch_data_and_save_to_disk
+    def update_data
       DataFetcher.save_to_disk
     end
     module_function :at,
                     :currencies_available,
                     :dates_available,
                     :most_recent,
-                    :fetch_data_and_save_to_disk
+                    :update_data
   end
 end
