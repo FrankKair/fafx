@@ -14,6 +14,12 @@ RSpec.describe Fafx do
     end.to raise_exception(Fafx::DateError)
   end
 
+  it 'Raise exception if date is not a Date object' do
+    expect do
+      Fafx::ExchangeRate.at('12-12-2019', 'GBP', 'USD')
+    end.to raise_exception(Fafx::DateError)
+  end
+
   it 'Raise exception if currency does not exist' do
     expect do
       Fafx::ExchangeRate.at(Date.today, 'ZZZ', 'USD')

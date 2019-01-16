@@ -1,16 +1,10 @@
 module Fafx
   module ExchangeRate
     def at(date, base, other)
-      case date.wday
-      when 6 # Saturday
-        date -= 1
-      when 0 # Sunday
-        date -= 2
-      end
-
+      date = DateHandler.get(date)
       ex_rates = Core.new
-      base = ex_rates.rates_at(date.to_s, base)
-      other = ex_rates.rates_at(date.to_s, other)
+      base = ex_rates.rates_at(date, base)
+      other = ex_rates.rates_at(date, other)
       other / base
     end
 
