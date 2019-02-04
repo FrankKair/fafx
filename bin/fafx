@@ -36,7 +36,7 @@ begin
     when :dates
       puts Fafx::ExchangeRate.dates_available
     when :update
-      Fafx::ExchangeRate.fetch_data_and_save_to_disk
+      Fafx::ExchangeRate.update_data
       puts 'Exchange rates data updated!'
     end
   end

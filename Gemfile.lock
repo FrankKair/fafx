@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fafx (0.1.5)
+    fafx (0.1.6)
       nokogiri (~> 1.8, >= 1.8.2)
 
 GEM
