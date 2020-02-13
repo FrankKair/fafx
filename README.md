@@ -26,6 +26,10 @@ Usage: fafx [options]
 require 'Date'
 require 'fafx'
 
+# Gets the most recent rates
+Fafx::ExchangeRate.get('GBP', 'USD')
+# => 1.2951645399597045
+
 Fafx::ExchangeRate.at(Date.today, 'GBP', 'USD')
 # => 1.2951645399597045
 
