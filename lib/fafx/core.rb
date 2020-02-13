@@ -9,6 +9,11 @@ class Core
     @currencies = @rates[@dates.first].keys
   end
 
+  def rate(curr)
+    raise Fafx::CurrencyError, "#{curr} not found" unless @currencies.include?(curr)
+    @rates[@dates.first][curr]
+  end
+
   def rates_at(date, curr)
     raise Fafx::DateError, 'Date not available' unless @dates.include?(date)
     raise Fafx::CurrencyError, "#{curr} not found" unless @currencies.include?(curr)
