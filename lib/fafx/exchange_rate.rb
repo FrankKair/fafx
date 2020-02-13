@@ -1,5 +1,10 @@
 module Fafx
   module ExchangeRate
+    def get(base, other)
+      core = Core.new
+      core.rate(other) / core.rate(base)
+    end
+
     def at(date, base, other)
       date = DateHandler.get(date)
       ex_rates = Core.new
@@ -25,7 +30,8 @@ module Fafx
     def update_data
       DataFetcher.save_to_disk
     end
-    module_function :at,
+    module_function :get,
+                    :at,
                     :currencies_available,
                     :dates_available,
                     :most_recent,
