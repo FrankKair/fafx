@@ -45,6 +45,10 @@ Fafx::ExchangeRate.most_recent
 
 The `at` function may raise a `DateError` or `CurrencyError` exception, should the date or currency be unavailable. Passing an object other than `Date` to `at` raises `DateError` as well.
 
+## API
+
+You can easily build an API on top of `fafx`, an example is given [here](https://github.com/FrankKair/fafx/tree/master/api) with [sinatra](http://sinatrarb.com/).
+
 ## Updating the exchange rates data
 
 You can update the exchange rates values either via the **CLI**, **Rake task** or **programmatically**:
