@@ -47,7 +47,7 @@ The `at` function may raise a `DateError` or `CurrencyError` exception, should t
 
 ## API
 
-You can easily build an API on top of `fafx`, an example is given [here]() with [sinatra](http://sinatrarb.com/).
+You can easily build an API on top of `fafx`, an example is given [here](https://github.com/FrankKair/fafx/tree/master/api) with [sinatra](http://sinatrarb.com/).
 
 ## Updating the exchange rates data
 

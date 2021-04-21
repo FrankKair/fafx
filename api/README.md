@@ -6,7 +6,7 @@ Minimalist (no auth) API that uses the [fafx](https://github.com/FrankKair/fafx)
 
 ### Requirements & running
 
-`make deps` to install the dependencies ([sinatra](http://sinatrarb.com/) web framework and fafx).
+`make deps` to install the dependencies ([sinatra](http://sinatrarb.com/) web framework and [fafx](https://github.com/FrankKair/fafx)).
 
 `make run` to start the server.
 
