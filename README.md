@@ -62,13 +62,3 @@ require 'fafx'
 
 Fafx::ExchangeRate.update_data
 ```
-
----
-
-One can also schedule a **cron job** (the following example fetches the data every minute):
-
-```
-* * * * * . ~/.zshrc; fafx -u
-```
-
-Note: `. ~/.zshrc` is used to load the environment with the Ruby gems path, because cron uses `PATH=/usr/bin:/usr/sbin` and `SHELL=/usr/bin/sh` by default. Fonts: [here](http://man7.org/linux/man-pages/man5/crontab.5.html) and [here](http://www.adminschoice.com/crontab-quick-reference)
