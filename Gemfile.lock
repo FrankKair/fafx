@@ -8,9 +8,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
-    nokogiri (1.11.7-arm64-darwin)
+    nokogiri (1.12.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-darwin)
+    nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     racc (1.5.2)
     rake (13.0.3)
@@ -31,6 +33,7 @@ GEM
 PLATFORMS
   universal-darwin-20
   x86_64-darwin-17
+  x86_64-linux
 
 DEPENDENCIES
   bundler (~> 2.2.19)
