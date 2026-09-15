@@ -1,17 +1,9 @@
-module Fafx
-  class DateError < StandardError
-    attr_reader :message
-    def initialize(message)
-      super
-      @message = message
-    end
-  end
+# frozen_string_literal: true
 
-  class CurrencyError < StandardError
-    attr_reader :message
-    def initialize(message)
-      super
-      @message = message
-    end
-  end
+module Fafx
+  class DataError < StandardError; end
+
+  class DateError < StandardError; end
+
+  class CurrencyError < StandardError; end
 end

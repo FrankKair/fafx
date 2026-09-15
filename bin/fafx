@@ -1,45 +1,6 @@
 #!/usr/bin/env ruby
-require 'optparse'
+# frozen_string_literal: true
+
 require 'fafx'
 
-ARGV[0] = '--help' if ARGV.empty?
-unless ARGV[0].include?('--') || ARGV[0].include?('-')
-  puts "invalid option: #{ARGV[0]}"
-end
-
-options = {}
-opt_parser = OptionParser.new do |opt|
-  opt.on('--recent', 'Lists most recent rates') do |o|
-    options[:recent] = o
-  end
-  opt.on('--currencies', 'Lists available currencies') do |o|
-    options[:currencies] = o
-  end
-  opt.on('--dates', 'Lists available dates') do |o|
-    options[:dates] = o
-  end
-  opt.on('--update', 'Fetches new data from the web') do |o|
-    options[:update] = o
-  end
-end
-
-begin
-  opt_parser.parse!
-  options.keys.each do |k|
-    case k
-    when :recent
-      Fafx::ExchangeRate.most_recent.each_pair do |pair|
-        puts "#{pair.first} #{pair.last}"
-      end
-    when :currencies
-      puts Fafx::ExchangeRate.currencies_available
-    when :dates
-      puts Fafx::ExchangeRate.dates_available
-    when :update
-      Fafx::ExchangeRate.update_data
-      puts 'Exchange rates data updated!'
-    end
-  end
-rescue StandardError => e
-  puts e.to_s unless e.message == 'exit'
-end
+exit Fafx::CLI.run(ARGV)
